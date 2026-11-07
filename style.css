@@ -1,0 +1,152 @@
+/* ---------- Design tokens: edit these to restyle the whole site ---------- */
+:root {
+  --bg: #f7f8fa;
+  --text: #1d2330;
+  --text-muted: #5b6475;
+  --accent: #1f5f8b;
+  --rule: #dde1e8;
+
+  --font-body: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-heading: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+
+  --measure: 40rem;   /* max line length of the content column */
+  --space: 1.5rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14181f;
+    --text: #e6e9ef;
+    --text-muted: #9aa3b2;
+    --accent: #7fb4dc;
+    --rule: #2a313d;
+  }
+}
+
+/* ---------- Base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  line-height: 1.2;
+  margin: 0 0 0.5em;
+}
+
+h1 { font-size: clamp(2rem, 5vw, 3rem); }
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1.15rem; margin-bottom: 0.25em; }
+
+p { margin: 0 0 1em; }
+
+a {
+  color: var(--accent);
+  text-underline-offset: 0.2em;
+}
+
+a:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ---------- Layout ---------- */
+.site-header,
+main,
+.site-footer {
+  width: min(100% - 2 * var(--space), var(--measure));
+  margin-inline: auto;
+}
+
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem 2rem;
+  padding-block: var(--space);
+  border-bottom: 1px solid var(--rule);
+}
+
+.site-title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--text);
+  text-decoration: none;
+}
+
+nav ul {
+  display: flex;
+  gap: 1.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav a {
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+nav a:hover { color: var(--accent); text-decoration: underline; }
+
+main section {
+  padding-block: 2.5rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+main section:last-child { border-bottom: 0; }
+
+.intro { padding-top: 4rem; }
+
+.lead {
+  font-size: 1.25rem;
+  color: var(--text-muted);
+}
+
+/* ---------- Components ---------- */
+.project-list,
+.contact-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.project-list li { margin-bottom: 1.5rem; }
+.project-list li:last-child { margin-bottom: 0; }
+.project-list p { margin: 0; color: var(--text-muted); }
+
+.contact-list li { margin-bottom: 0.25rem; }
+
+.site-footer {
+  padding-block: var(--space);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.skip-link {
+  position: absolute;
+  left: 0.5rem;
+  top: -4rem;
+  background: var(--accent);
+  color: var(--bg);
+  padding: 0.5rem 1rem;
+  z-index: 10;
+}
+
+.skip-link:focus { top: 0.5rem; }
