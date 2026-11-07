@@ -12,7 +12,7 @@
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="wrap site-header">
-    <a class="site-title" href="/">Caden Rose</a>
+    <a class="site-title" href="./">Caden Rose</a>
     <nav aria-label="Main">
       <ul>
         <li><a href="#work">Work</a></li>
@@ -37,7 +37,7 @@
           </div>
         </div>
         <div class="hero-photo">
-          <img src="images/headshot.jpg" alt="Portrait of Caden Rose" width="400" height="500">
+          <img src="images/headshot.jpg" alt="Portrait of Caden Rose">
         </div>
       </div>
     </section>
@@ -51,7 +51,7 @@
         <!-- Feature tile: feeder motor control + live PI demo -->
         <article class="tile tile-miller tile-wide tile-feature">
           <div class="tile-copy">
-            <p class="tile-from"><span class="logo-plate"><img src="images/miller-logo.svg" alt="Miller Electric Mfg."></span>Miller Electric, 2026</p>
+            <p class="tile-from"><span class="logo-plate"><img src="images/miller-logo.webp" alt="Miller Electric Mfg."></span>Miller Electric, 2026</p>
             <h3>Motor control for a new wire feeder</h3>
             <p>The new OptX feeder board swapped slow relay-based direction control for a full H-bridge driver. I wrote the FreeRTOS application around it, with PI control that made feeding faster, more precise, and more responsive.</p>
             <p class="stack">C, FreeRTOS, PI control, PWM</p>
@@ -71,14 +71,14 @@
         </article>
 
         <article class="tile tile-miller">
-          <p class="tile-from"><span class="logo-plate"><img src="images/miller-logo.svg" alt="Miller Electric Mfg."></span>Miller Electric, 2026</p>
+          <p class="tile-from"><span class="logo-plate"><img src="images/miller-logo.webp" alt="Miller Electric Mfg."></span>Miller Electric, 2026</p>
           <h3>A new power board and its serial protocol</h3>
           <p>A redesigned Auxiliary Power Unit replaced an AC-output cooler supply with a smaller, lighter DC-output board on a modern processor. I wrote its C firmware, including RS-485 communication over proprietary Data Link and Frame layers, to support the Dynasty and Maxstar TIG welder line.</p>
           <p class="stack">C, RS-485, custom framing</p>
         </article>
 
         <article class="tile tile-miller">
-          <p class="tile-from"><span class="logo-plate"><img src="images/miller-logo.svg" alt="Miller Electric Mfg."></span>Miller Electric, 2026</p>
+          <p class="tile-from"><span class="logo-plate"><img src="images/miller-logo.webp" alt="Miller Electric Mfg."></span>Miller Electric, 2026</p>
           <h3>Firmware updates over Ethernet</h3>
           <p>I configured a silicon Ethernet switch and built a TCP/IP command interface on LwIP. It runs in two places, under FreeRTOS in the application and bare-metal in the bootloader, with the same interface in both so boards can be updated in the field.</p>
           <p class="stack">C, LwIP, FreeRTOS, bootloader</p>
@@ -112,7 +112,7 @@
         </article>
 
         <article class="tile tile-miller">
-          <p class="tile-from"><span class="logo-plate"><img src="images/miller-logo.svg" alt="Miller Electric Mfg."></span>Miller Electric, 2026</p>
+          <p class="tile-from"><span class="logo-plate"><img src="images/miller-logo.webp" alt="Miller Electric Mfg."></span>Miller Electric, 2026</p>
           <h3>Tracking down a rare boot failure</h3>
           <p>A small number of UI boards would not boot into their application. I investigated it and wrote an ECO that fixed the bug and let the faulty boards go back to the manufacturing line.</p>
           <p class="stack">Debugging, ECO process</p>
