@@ -3,19 +3,20 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Your Name</title>
-  <meta name="description" content="Personal website of Your Name.">
+  <title>Caden Rose | Embedded Software Engineer</title>
+  <meta name="description" content="Caden Rose is a software engineer focused on embedded systems and firmware: bare-metal bring-up, bootloaders, communication protocols, and field tooling.">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header">
-    <a class="site-title" href="/">Your Name</a>
+    <a class="site-title" href="/">Caden Rose</a>
     <nav aria-label="Main">
       <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#education">Education</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -23,47 +24,94 @@
 
   <main id="main">
     <section class="intro">
-      <h1>Hi, I'm Your Name.</h1>
-      <p class="lead">One or two sentences about what you do and what you care about.</p>
+      <h1>Caden Rose</h1>
+      <p class="lead">I write firmware for embedded hardware, from bare-metal bring-up and bootloaders to the protocols and tools that people use in the field.</p>
+      <svg class="signal" viewBox="0 0 600 24" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+        <path d="M0 18H40V6H80V18H100V6H180V18H200V6H220V18H280V6H300V18H360V6H380V18H420V6H500V18H520V6H540V18H600" />
+      </svg>
+      <p>I'm finishing a B.S. in Software Engineering at Michigan Technological University this December. After graduation I'll join Miller Electric Mfg. as a software engineer.</p>
     </section>
 
     <section id="about">
       <h2>About</h2>
-      <p>Write a short paragraph about yourself: your background, what you're working on, and what you enjoy outside of work.</p>
-      <p>A second paragraph is a good place for details like where you're based or what you're currently learning.</p>
+      <p>I like owning the whole path between hardware and software: bringing up a new board, designing the protocol it speaks, and building the tooling that lets someone else use it. My internships have covered industrial welding equipment and fire truck electronics, and I'm looking to keep doing that kind of end-to-end work.</p>
     </section>
 
-    <section id="projects">
-      <h2>Projects</h2>
-      <ul class="project-list">
-        <li>
-          <h3><a href="https://github.com/your-username/project-one">Project One</a></h3>
-          <p>A brief description of what this project does and the tools you used.</p>
-        </li>
-        <li>
-          <h3><a href="https://github.com/your-username/project-two">Project Two</a></h3>
-          <p>A brief description of what this project does and the tools you used.</p>
-        </li>
-        <li>
-          <h3><a href="https://github.com/your-username/project-three">Project Three</a></h3>
-          <p>A brief description of what this project does and the tools you used.</p>
-        </li>
-      </ul>
+    <section id="experience">
+      <h2>Experience</h2>
+
+      <article class="entry">
+        <div class="entry-meta">
+          <h3>Software Engineering Intern</h3>
+          <p>Miller Electric Manufacturing<br>Appleton, WI<br>April to August 2026</p>
+        </div>
+        <ul class="entry-body">
+          <li>Wrote C firmware for a redesigned Auxiliary Power Unit, a smaller, lighter board on a modern processor that replaced an AC-output cooler power supply with a DC-output design. Implemented RS-485 communication with proprietary Data Link and Frame layers to support the new hardware across the Dynasty and Maxstar TIG welder line.</li>
+          <li>Built a FreeRTOS motor control application for a new OptX feeder board. Implemented PI control for a full H-bridge motor driver that replaced slower relay-based direction control, improving feed speed, precision, and responsiveness.</li>
+          <li>Configured a silicon Ethernet switch and built a TCP/IP command interface with LwIP in two contexts: RTOS-enabled in the FreeRTOS application and bare-metal in the bootloader. The interface is consistent across both, which supports in-field firmware updates over Ethernet.</li>
+          <li>Investigated a rare firmware issue that kept UI boards from booting into their application, then wrote an ECO that fixed the bug and let faulty boards return to the manufacturing line.</li>
+        </ul>
+      </article>
+
+      <article class="entry">
+        <div class="entry-meta">
+          <h3>Software Engineering Intern</h3>
+          <p>Pierce Manufacturing<br>Oshkosh, WI<br>April to August 2025</p>
+        </div>
+        <ul class="entry-body">
+          <li>Engineered a dual-channel CAN diagnostics tool on a Raspberry Pi that helps field technicians diagnose truck electrical faults. It measures bus voltage and resistance to find missing or excess termination, and records bus traffic as .trc trace files for engineers to analyze in PCAN Explorer.</li>
+          <li>Designed the full hardware platform for the tool: a custom PCB in KiCad, a battery power system for untethered field use, a 3D-printed enclosure, and a C++/GTK-3 interface for technicians.</li>
+          <li>Redesigned and debugged the first-revision PCB for Pierce's Hardware-in-the-Loop simulator, which lets engineers test trucks without physical units in the shop. Documented the design flaws and fixes to give the next engineer a stronger starting point.</li>
+        </ul>
+      </article>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <dl class="skills">
+        <dt>Languages</dt>
+        <dd>C, C++, Java, Python, JavaScript/React</dd>
+        <dt>Embedded</dt>
+        <dd>STM32, timers/PWM, ADC, cache/MPU, PI control, FreeRTOS, LwIP</dd>
+        <dt>Protocols</dt>
+        <dd>UART, SPI, I2C, CAN, Ethernet, RS-485, TCP/IP</dd>
+        <dt>Dev tools</dt>
+        <dd>VS Code, STM32CubeIDE, CMake, KiCad</dd>
+        <dt>Test and debug</dt>
+        <dd>Oscilloscopes, multimeters, PCAN analyzers</dd>
+        <dt>CI/CD</dt>
+        <dd>Git, GitHub, Azure DevOps, pytest, Docker</dd>
+      </dl>
+    </section>
+
+    <section id="education">
+      <h2>Education</h2>
+      <article class="entry">
+        <div class="entry-meta">
+          <h3>B.S. in Software Engineering</h3>
+          <p>Michigan Technological University<br>Houghton, MI<br>August 2023 to December 2026 (expected)</p>
+        </div>
+        <div class="entry-body">
+          <p>Cumulative GPA 3.85, departmental GPA 3.93.</p>
+          <p>Coursework: Computer Organization, Systems Programming, Concurrent Programming, Algorithms, Embedded Microcontrollers, Digital Logic, Hardware/Software Programming, Data Structures, Software Quality Assurance, Senior Design Project, Linear Algebra, Multivariable Calculus, Differential Equations.</p>
+        </div>
+      </article>
     </section>
 
     <section id="contact">
       <h2>Contact</h2>
-      <p>The best way to reach me is by email.</p>
+      <p>Email is the best way to reach me.</p>
       <ul class="contact-list">
-        <li><a href="mailto:you@example.com">you@example.com</a></li>
-        <li><a href="https://github.com/your-username">GitHub</a></li>
-        <li><a href="https://www.linkedin.com/in/your-username">LinkedIn</a></li>
+        <li><a href="mailto:cadenrose@yahoo.com">cadenrose@yahoo.com</a></li>
+        <li><a href="https://github.com/cadenjrose">GitHub</a></li>
+        <!-- Add your LinkedIn once you have the URL:
+        <li><a href="https://www.linkedin.com/in/YOUR-LINKEDIN-SLUG">LinkedIn</a></li> -->
       </ul>
     </section>
   </main>
 
   <footer class="site-footer">
-    <p>&copy; 2026 Your Name</p>
+    <p>&copy; 2026 Caden Rose</p>
   </footer>
 </body>
 </html>

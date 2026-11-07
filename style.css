@@ -1,32 +1,32 @@
 /* ---------- Design tokens: edit these to restyle the whole site ---------- */
 :root {
-  --bg: #f7f8fa;
-  --text: #1d2330;
-  --text-muted: #5b6475;
-  --accent: #1f5f8b;
-  --rule: #dde1e8;
+  --bg: #f3f6f3;
+  --text: #17211c;
+  --text-muted: #55635b;
+  --accent: #1b6b4a;
+  --rule: #d3dcd5;
 
   --font-body: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --font-heading: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
 
-  --measure: 40rem;   /* max line length of the content column */
+  --measure: 46rem;   /* max width of the content column */
   --space: 1.5rem;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #14181f;
-    --text: #e6e9ef;
-    --text-muted: #9aa3b2;
-    --accent: #7fb4dc;
-    --rule: #2a313d;
+    --bg: #0f1b16;
+    --text: #e4ece7;
+    --text-muted: #a0b0a7;
+    --accent: #8cc7a8;
+    --rule: #26382f;
   }
 }
 
 /* ---------- Base ---------- */
 *, *::before, *::after { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 1rem; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -47,9 +47,9 @@ h1, h2, h3 {
   margin: 0 0 0.5em;
 }
 
-h1 { font-size: clamp(2rem, 5vw, 3rem); }
+h1 { font-size: clamp(2.5rem, 7vw, 4rem); letter-spacing: -0.01em; }
 h2 { font-size: 1.5rem; }
-h3 { font-size: 1.15rem; margin-bottom: 0.25em; }
+h3 { font-size: 1.05rem; margin-bottom: 0.25em; }
 
 p { margin: 0 0 1em; }
 
@@ -79,7 +79,6 @@ main,
   align-items: baseline;
   gap: 0.5rem 2rem;
   padding-block: var(--space);
-  border-bottom: 1px solid var(--rule);
 }
 
 .site-title {
@@ -92,7 +91,8 @@ main,
 
 nav ul {
   display: flex;
-  gap: 1.25rem;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.25rem;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -107,29 +107,87 @@ nav a:hover { color: var(--accent); text-decoration: underline; }
 
 main section {
   padding-block: 2.5rem;
-  border-bottom: 1px solid var(--rule);
+  border-top: 1px solid var(--rule);
 }
 
-main section:last-child { border-bottom: 0; }
+main section.intro { border-top: 0; padding-top: 3.5rem; }
 
-.intro { padding-top: 4rem; }
-
+/* ---------- Intro ---------- */
 .lead {
   font-size: 1.25rem;
+  max-width: 36rem;
   color: var(--text-muted);
 }
 
-/* ---------- Components ---------- */
-.project-list,
+.signal {
+  display: block;
+  width: 100%;
+  height: 1.5rem;
+  margin-block: 1.5rem;
+}
+
+.signal path {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2;
+  stroke-linejoin: miter;
+  vector-effect: non-scaling-stroke;
+}
+
+/* ---------- Experience and education entries ---------- */
+.entry {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+  margin-bottom: 2.5rem;
+}
+
+.entry:last-child { margin-bottom: 0; }
+
+.entry-meta p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.entry-body { margin: 0; padding-left: 1.1rem; }
+.entry-body li { margin-bottom: 0.75rem; }
+.entry-body li::marker { color: var(--accent); }
+div.entry-body { padding-left: 0; }
+
+@media (min-width: 40rem) {
+  .entry { grid-template-columns: 13rem 1fr; gap: 2rem; }
+}
+
+/* ---------- Skills ---------- */
+.skills {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin: 0;
+}
+
+.skills dt {
+  font-weight: 600;
+  margin-top: 0.75rem;
+}
+
+.skills dd {
+  margin: 0;
+  color: var(--text-muted);
+}
+
+@media (min-width: 40rem) {
+  .skills { grid-template-columns: 13rem 1fr; column-gap: 2rem; row-gap: 0.6rem; }
+  .skills dt { margin-top: 0; }
+}
+
+/* ---------- Contact and footer ---------- */
 .contact-list {
   list-style: none;
   margin: 0;
   padding: 0;
 }
-
-.project-list li { margin-bottom: 1.5rem; }
-.project-list li:last-child { margin-bottom: 0; }
-.project-list p { margin: 0; color: var(--text-muted); }
 
 .contact-list li { margin-bottom: 0.25rem; }
 
@@ -137,6 +195,7 @@ main section:last-child { border-bottom: 0; }
   padding-block: var(--space);
   color: var(--text-muted);
   font-size: 0.9rem;
+  border-top: 1px solid var(--rule);
 }
 
 .skip-link {
