@@ -7,6 +7,7 @@
   <meta name="description" content="Caden Rose is a software engineer who works close to the hardware: board bring-up, bootloaders, communication protocols, and field tooling.">
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
+  <script src="lightbox.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -16,6 +17,7 @@
     <nav aria-label="Main">
       <ul>
         <li><a href="#work">Work</a></li>
+        <li><a href="#projects">Projects</a></li>
         <li><a href="#toolbox">Toolbox</a></li>
         <li><a href="#school">School</a></li>
         <li><a href="#contact">Contact</a></li>
@@ -48,25 +50,21 @@
 
       <div class="tiles">
 
-        <!-- Feature tile: feeder motor control + live PI demo -->
-        <article class="tile tile-miller tile-wide tile-feature">
-          <div class="tile-copy">
-            <p class="tile-from"><span class="logo-plate"><img src="images/miller-logo.webp" alt="Miller Electric Mfg."></span>Miller Electric, 2026</p>
-            <h3>Motor control for a new wire feeder</h3>
-            <p>The new OptX feeder board swapped slow relay-based direction control for a full H-bridge driver. I wrote the FreeRTOS application around it, with PI control that made feeding faster, more precise, and more responsive.</p>
-            <p class="stack">C, FreeRTOS, PI control, PWM</p>
-          </div>
-          <div class="scope">
-            <canvas id="scope-canvas" aria-label="Step response of a PI-controlled motor, redrawn as you change the gains" role="img"></canvas>
-            <div class="scope-controls">
-              <label for="kp">Kp <output id="kp-out">2.0</output></label>
-              <input type="range" id="kp" min="0" max="8" step="0.1" value="2">
-              <label for="ki">Ki <output id="ki-out">14.0</output></label>
-              <input type="range" id="ki" min="0" max="24" step="0.1" value="14">
+        <!-- Feature tile: feeder motor control -->
+        <article class="tile tile-miller tile-wide">
+          <div class="tile-top">
+            <div class="tile-copy">
+              <p class="tile-from"><span class="logo-plate"><img src="images/miller-logo.webp" alt="Miller Electric Mfg."></span>Miller Electric, 2026</p>
+              <h3>Motor control for a new wire feeder</h3>
+              <p>
+                 The new OptX 2kW feeder board swapped slow relay-based direction control for a full H-bridge driver. I wrote the FreeRTOS application around it, with PI control that made feeding faster, more precise, and more responsive. 
+                 Check it out <a href="https://www.millerwelds.com/en-us/equipment/welders/laser?gad_source=1&gad_campaignid=9842191851&gbraid=0AAAAAD68PWtj5M7lF0xE_cUXyURLoDedg&gclid=Cj0KCQiA5NXXBhDEARIsABAJhdLSHSvZufl6DbdvuT6ptri4hyVHY1L3d1dykHiVTgruM1SgnBM310UaAnKEEALw_wcB">here</a>!
+              </p>
+              <p class="stack">C, FreeRTOS, PI control, PWM</p>
             </div>
-            <p class="scope-readout" id="scope-readout" aria-live="polite"></p>
-            <p class="scope-note">A toy motor-speed model, not the real feeder. Drag the gains and watch the step response change.</p>
-            <noscript><p class="scope-note">This demo needs JavaScript.</p></noscript>
+            <figure class="tile-figure">
+              <img src="images/feeder.webp" alt="Miller wire feeder">
+            </figure>
           </div>
         </article>
 
@@ -119,6 +117,49 @@
         </article>
 
       </div>
+    </section>
+
+    <section id="projects" class="wrap section">
+      <h2>Projects</h2>
+      <p class="section-intro">Work from outside my internships.</p>
+
+      <article class="tile tile-project">
+        <div class="tile-top">
+          <div class="tile-copy">
+            <p class="tile-from"><span class="logo-plate"><img src="images/mtu-logo.png" alt="Michigan Technological University"></span>Michigan Tech, EE3174 final project, Fall 2025</p>
+            <h3>Smart Lighting System</h3>
+            <p>A motion-controlled light switch on an STM32 Nucleo, with a resistive touchscreen as the interface. It drives a relay in three modes: ON and OFF behave like a normal switch, and AUTO turns the light on when a mmWave radar sensor detects motion.</p>
+            <p>The touchscreen has three screens: one to pick the mode, one for settings (motion sensitivity, inactivity timeout, screen brightness), and one for diagnostics (time since last motion, activation count, errors, and a system reset).</p>
+            <p>I wrote the drivers for the display, touch controller, and radar sensor, plus recovery routines that reset the I2C and SPI buses to a known state.</p>
+            <p class="stack">C, STM32 (NUCLEO-L152RE), SPI, I2C, UART</p>
+            <div class="button-row">
+              <a class="button button-outline" href="https://github.com/cadenjrose/Smart-Lighting-System">View on GitHub</a>
+            </div>
+          </div>
+          <figure class="tile-figure">
+            <img src="images/nucleo.png" alt="The Smart Lighting System UI">
+          </figure>
+        </div>
+      </article>
+
+      <article class="tile tile-project tile-scorer">
+        <div class="tile-top">
+          <div class="tile-copy">
+            <p class="tile-from">Personal project, August 2025</p>
+            <h3>Two-player scoreboard</h3>
+            <p>A standalone scoreboard for two players, built on an Arduino Mega 2560. Each player has one button and a pair of 7-segment displays. Tap to add a point, and the board plays up to 21 and requires a win by 2. When someone wins, their score flashes.</p>
+            <p>Holding either button for three seconds resets the whole board through the Mega's reset pin. The display code is table-driven and written for common-anode segments, with out-of-range values blanking the digit.</p>
+            <p class="stack">C++, Arduino Mega 2560, 7-segment displays, GPIO</p>
+            <div class="button-row">
+              <a class="button button-outline" href="https://github.com/cadenjrose/Scoring_Device">View on GitHub</a>
+            </div>
+          </div>
+          <figure class="tile-figure">
+            <img src="images/scorer_diagram.png" alt="Wiring diagram for the scoreboard: an Arduino Mega 2560 connected to four 7-segment displays and two buttons">
+          </figure>
+        </div>
+      </article>
+
     </section>
 
     <section id="toolbox" class="wrap section">

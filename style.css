@@ -225,6 +225,11 @@ nav a:hover { color: var(--ink); text-decoration: underline; }
 
 .stack { margin: 0; font-size: 0.92rem; color: var(--text-muted) !important; }
 
+.feeder {
+  display: block;
+  width: 100%;
+}
+
 /* Logos sit on a white plate so they read on any background */
 .logo-plate {
   flex: none;
@@ -245,40 +250,102 @@ nav a:hover { color: var(--ink); text-decoration: underline; }
 /* Feature tiles lay out copy and a companion side by side */
 .tile-feature { display: grid; grid-template-columns: 1fr; gap: 1.5rem 2.5rem; }
 
+.tile-top {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 50rem) {
+  .tile-top { grid-template-columns: 1.1fr 1fr; align-items: center; }
+}
+
+.tile-figure { margin: 0; }
+
+.tile-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  border: 1px solid var(--rule);
+  background: var(--rule);
+}
+
+.tile-project { --tile-color: var(--green); }
+.tile-project .tile-top { margin-bottom: 0; }
+.tile-project + .tile-project { margin-top: 1.25rem; }
+.tile-scorer { --tile-color: var(--teal); }
+
 @media (min-width: 50rem) {
   .tile-feature { grid-template-columns: 1fr 1.15fr; align-items: start; }
 }
-
-/* ---------- Scope demo ---------- */
-.scope canvas {
-  display: block;
-  width: 100%;
-  aspect-ratio: 5 / 2.4;
-  border-radius: var(--radius);
-  background: #0b1511;
-}
-
-.scope-controls {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 0.4rem 1rem;
-  align-items: center;
-  margin-top: 0.9rem;
-  font-weight: 600;
-  color: var(--ink);
-}
-
-.scope-controls output { display: inline-block; min-width: 2.2rem; font-variant-numeric: tabular-nums; color: var(--green); }
-.scope-controls input { width: 100%; accent-color: var(--green); }
-
-.scope-readout { margin: 0.75rem 0 0.25rem; font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums; }
-.scope-note { margin: 0; font-size: 0.88rem; color: var(--text-muted) !important; }
 
 /* ---------- CAN tool specs ---------- */
 .specs { margin: 0; }
 .specs dt { margin-top: 0.9rem; font-weight: 700; color: var(--pierce); }
 .specs dt:first-child { margin-top: 0; }
 .specs dd { margin: 0; }
+
+/* ---------- Image lightbox ---------- */
+.tile-figure img { cursor: zoom-in; }
+.tile-figure img:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.lightbox {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  padding: 1.5rem;
+  border: 0;
+  background: transparent;
+}
+
+.lightbox::backdrop { background: rgb(0 0 0 / 0.85); }
+
+.lightbox[open] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: var(--radius);
+  background: #ffffff;
+  cursor: zoom-out;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 1rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 0;
+  border-radius: 50%;
+  background: rgb(255 255 255 / 0.15);
+  color: #ffffff;
+  font-size: 1.75rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.lightbox-close:hover { background: rgb(255 255 255 / 0.3); }
+
+/* Lock page scroll while the lightbox is open */
+html:has(.lightbox[open]) { overflow: hidden; }
+
+/* Keep the layout from shifting when the scrollbar disappears */
+html { scrollbar-gutter: stable; }
+
+/* Don't let scrolling inside the lightbox chain through to the page */
+.lightbox { overscroll-behavior: contain; }
 
 /* ---------- Toolbox ---------- */
 .toolbox {
